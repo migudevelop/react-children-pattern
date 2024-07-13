@@ -1,12 +1,16 @@
-import { useMemo, ReactNode } from "react";
+import type {
+  ReactNode,
+  FunctionComponent,
+  JSXElementConstructor,
+} from "react";
+import { useMemo } from "react";
 import {
   findChildrenByType,
   getReactComponentDisplayName,
   getReactElementType,
 } from "../helpers";
-import { ComponentFunction } from "../types";
 import { isNull, isString } from "@migudevelop/types-utils";
-
+import {} from "react";
 /**
  * Returns the childs matching the provided function component
  * @param componentFunction function component
@@ -15,7 +19,10 @@ import { isNull, isString } from "@migudevelop/types-utils";
  * @example useChildrenOfType(Child, children)
  */
 export function useChildrenOfType(
-  componentFunction: ComponentFunction,
+  componentFunction:
+    | JSXElementConstructor<unknown>
+    | FunctionComponent<unknown>
+    | FunctionComponent<Element>,
   children?: ReactNode
 ) {
   const childrenOfType = useMemo(
@@ -34,7 +41,10 @@ export function useChildrenOfType(
  * @example useChildOfType(Child, children)
  */
 export function useChildOfType(
-  componentFunction: ComponentFunction,
+  componentFunction:
+    | JSXElementConstructor<unknown>
+    | FunctionComponent<unknown>
+    | FunctionComponent<Element>,
   children?: ReactNode
 ) {
   const childrenOfType = useChildrenOfType(componentFunction, children);
@@ -50,7 +60,11 @@ export function useChildOfType(
  * @example useCheckChildrenTypes([Child, OtherChild], children)
  */
 export function useCheckChildrenTypes(
-  componentFunctions: Array<ComponentFunction>,
+  componentFunctions: Array<
+    | JSXElementConstructor<unknown>
+    | FunctionComponent<unknown>
+    | FunctionComponent<Element>
+  >,
   children?: ReactNode
 ) {
   if (!children) {

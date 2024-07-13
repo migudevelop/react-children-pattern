@@ -1,3 +1,5 @@
-export * from "./helpers";
-export * from "./hooks";
-export * from "./types";
+export {
+  useCheckChildrenTypes,
+  useChildOfType,
+  useChildrenOfType,
+} from "./hooks";

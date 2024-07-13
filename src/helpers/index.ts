@@ -1,4 +1,3 @@
-import { ComponentFunction } from "../types";
 import {
   isArray,
   isBoolean,
@@ -6,7 +5,7 @@ import {
   isNumber,
   isString,
 } from "@migudevelop/types-utils";
-import {
+import type {
   FunctionComponent,
   JSXElementConstructor,
   ReactElement,
@@ -73,13 +72,19 @@ export function getReactElementNodeDisplayName(node: ReactNode): string {
 }
 
 export function getReactComponentDisplayName(
-  Component: ComponentFunction
+  Component:
+    | JSXElementConstructor<unknown>
+    | FunctionComponent<unknown>
+    | FunctionComponent<Element>
 ): string {
   return Component.name;
 }
 
 export function findChildrenByType(
-  componentFunction: ComponentFunction,
+  componentFunction:
+    | JSXElementConstructor<unknown>
+    | FunctionComponent<unknown>
+    | FunctionComponent<Element>,
   children?: ReactNode
 ) {
   if (!children) {
