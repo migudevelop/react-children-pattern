@@ -11,6 +11,7 @@ import type {
   ReactElement,
   ReactNode,
   ReactPortal,
+  FunctionComponentElement,
 } from "react";
 
 const UNKNOWN_DISPLAY_NAME = "unknown";
@@ -73,6 +74,7 @@ export function getReactElementNodeDisplayName(node: ReactNode): string {
 
 export function getReactComponentDisplayName(
   Component:
+    | FunctionComponentElement
     | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
@@ -83,6 +85,7 @@ export function getReactComponentDisplayName(
 
 export function findChildrenByType(
   componentFunction:
+    | FunctionComponentElement
     | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>

@@ -3,6 +3,7 @@ import type {
   ReactNode,
   FunctionComponent,
   JSXElementConstructor,
+  FunctionComponentElement,
 } from "react";
 import { useMemo } from "react";
 import {
@@ -21,6 +22,7 @@ import { isNull, isString } from "@migudevelop/types-utils";
  */
 export function useChildrenOfType(
   componentFunction:
+    | FunctionComponentElement
     | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
@@ -44,6 +46,7 @@ export function useChildrenOfType(
  */
 export function useChildOfType(
   componentFunction:
+    | FunctionComponentElement
     | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
@@ -64,6 +67,7 @@ export function useChildOfType(
  */
 export function useCheckChildrenTypes(
   componentFunctions: Array<
+    | FunctionComponentElement
     | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>

@@ -1,6 +1,6 @@
 {
   "name": "react-children-pattern",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "description": "React utilities for checking allowed components and retrieving specific children",
   "main": "./dist/index.js",
