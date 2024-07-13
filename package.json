@@ -1,6 +1,7 @@
 {
   "name": "react-children-pattern",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": false,
   "description": "React utilities for checking allowed components and retrieving specific children",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,6 +23,11 @@
     "react",
     "children"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migudevelop/react-children-pattern.git"
+  },
+  "homepage": "https://github.com/migudevelop/react-children-pattern.git",
   "engines": {
     "node": ">= 18.0.x"
   },

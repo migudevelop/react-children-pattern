@@ -2,7 +2,6 @@ import { ComponentFunction } from "../types";
 import {
   isArray,
   isBoolean,
-  isNull,
   isNullish,
   isNumber,
   isString,
@@ -91,29 +90,4 @@ export function findChildrenByType(
     (child) =>
       getReactElementType(child as ReactElement<unknown>) === componentFunction
   );
-}
-
-export function checkChildrenTypes(
-  componentFunctions: Array<ComponentFunction>,
-  children?: ReactNode
-) {
-  if (!children) {
-    return;
-  }
-  const childrenArray = Array.isArray(children) ? children : [children];
-  childrenArray.forEach((child) => {
-    const elementContructor = getReactElementType(child);
-    if (isNull(child) || child === false) {
-      return;
-    }
-    if (
-      !elementContructor ||
-      isString(elementContructor) ||
-      !componentFunctions.includes(elementContructor)
-    ) {
-      throw new Error(
-        `Invalid child type ${getReactComponentDisplayName(child)}. Expected one of ${componentFunctions.map(getReactComponentDisplayName).join(", ")}`
-      );
-    }
-  });
 }
