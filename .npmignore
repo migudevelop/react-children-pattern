@@ -1,0 +1,14 @@
+!dist/
+src
+
+*.json
+*.config.js
+*.config.cjs
+*.config.mjs
+*.yml
+*.yaml
+
+*.tgz
+
+coverage
+test
