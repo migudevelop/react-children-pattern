@@ -9,7 +9,9 @@
     "prebuild": "rm -rf ./dist",
     "build": "pnpm run prebuild && tsc",
     "prettier:write": "prettier './src/**/*.{js,jsx,ts,tsx}' --write",
-    "eslint": "eslint ."
+    "eslint": "eslint .",
+    "publish": "npm publish",
+    "release": "pnpm run build && pnpm run publish"
   },
   "keywords": [
     "types",
