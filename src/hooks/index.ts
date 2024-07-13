@@ -1,7 +1,13 @@
 import { useMemo, ReactNode } from "react";
-import { findChildrenByType } from "@/helpers";
-import { ComponentFunction } from "@/types";
+import { findChildrenByType } from "../helpers";
+import { ComponentFunction } from "../types";
 
+/**
+ * Returns the childs matching the provided function component
+ * @param componentFunction function component
+ * @param children react node
+ * @returns array
+ */
 export function useChildrenOfType(
   componentFunction: ComponentFunction,
   children?: ReactNode
@@ -14,6 +20,12 @@ export function useChildrenOfType(
   return childrenOfType;
 }
 
+/**
+ * Returns the first child matching the provided function component
+ * @param componentFunction function component
+ * @param children react node
+ * @returns the first child
+ */
 export function useChildOfType(
   componentFunction: ComponentFunction,
   children?: ReactNode

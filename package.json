@@ -6,7 +6,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "prebuild": "rm -rf ./dist",
-    "build": "pnpm run prebuild && tsc"
+    "build": "pnpm run prebuild && tsc",
+    "prettier:write": "prettier './src/**/*.{js,jsx,ts,tsx}' --write",
+    "eslint": "eslint ."
   },
   "keywords": [
     "types",

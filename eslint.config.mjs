@@ -1,6 +1,7 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 const ESLINT_OPTION = {
@@ -24,5 +25,20 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": ESLINT_OPTION.ERROR,
     },
   },
-  eslintPluginPrettierRecommended
+  {
+    files: ["src/**/*.{js,mjs,ts}"],
+    extends: [eslintPluginPrettierRecommended],
+    rules: {
+      ...eslintPluginPrettierRecommended.rules,
+      "prettier/prettier": [
+        ESLINT_OPTION.ERROR,
+        {
+          singleQuote: false,
+          semi: true,
+          trailingComma: "es5",
+          tabWidth: 2,
+        },
+      ],
+    },
+  }
 );

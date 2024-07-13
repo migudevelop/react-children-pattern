@@ -1,21 +1,21 @@
-import { ComponentFunction } from '@/types'
+import { ComponentFunction } from "../types";
 import {
   isArray,
   isBoolean,
   isNull,
   isNullish,
   isNumber,
-  isString
-} from '@migudevelop/types-utils'
+  isString,
+} from "@migudevelop/types-utils";
 import {
   FunctionComponent,
   JSXElementConstructor,
   ReactElement,
   ReactNode,
   ReactPortal,
-} from 'react'
+} from "react";
 
-const UNKNOWN_DISPLAY_NAME = 'unknown'
+const UNKNOWN_DISPLAY_NAME = "unknown";
 
 /**
  * Determines whether a ReactNode has type property
@@ -25,7 +25,7 @@ const UNKNOWN_DISPLAY_NAME = 'unknown'
 function hasTypeProperty(
   value: object | ReactElement | ReactPortal | Iterable<ReactNode>
 ) {
-  return Object.prototype.hasOwnProperty.call(value, 'type')
+  return Object.prototype.hasOwnProperty.call(value, "type");
 }
 
 /**
@@ -41,15 +41,15 @@ export function isReactElement(node: ReactNode): node is ReactElement<unknown> {
     isBoolean(node) ||
     isArray(node)
   ) {
-    return false
+    return false;
   }
-  return hasTypeProperty(node)
+  return hasTypeProperty(node);
 }
 
 /**
- * 
+ *
  * @param element dom element
- * @returns 
+ * @returns
  */
 export function getReactElementType(
   element: ReactElement<unknown, string | JSXElementConstructor<unknown>>
@@ -58,57 +58,53 @@ export function getReactElementType(
   | JSXElementConstructor<unknown>
   | FunctionComponent<unknown>
   | undefined {
-  return element?.type
+  return element?.type;
 }
 
 export function getReactElementNodeDisplayName(node: ReactNode): string {
   if (!isReactElement(node)) {
-    return UNKNOWN_DISPLAY_NAME
+    return UNKNOWN_DISPLAY_NAME;
   }
-  const type = getReactElementType(node)
+  const type = getReactElementType(node);
   return isString(type)
     ? type
     : (type as FunctionComponent<unknown>)?.displayName ||
         type?.name ||
-        UNKNOWN_DISPLAY_NAME
+        UNKNOWN_DISPLAY_NAME;
 }
 
 export function getReactComponentDisplayName(
-  Component:
-    ComponentFunction
+  Component: ComponentFunction
 ): string {
-  return Component.name
+  return Component.name;
 }
 
 export function findChildrenByType(
-  componentFunction:
-    ComponentFunction,
+  componentFunction: ComponentFunction,
   children?: ReactNode
 ) {
   if (!children) {
-    return []
+    return [];
   }
-  const childrenArray = isArray(children) ? children : [children]
+  const childrenArray = isArray(children) ? children : [children];
   return childrenArray.filter(
     (child) =>
       getReactElementType(child as ReactElement<unknown>) === componentFunction
-  )
+  );
 }
 
 export function checkChildrenTypes(
-  componentFunctions: Array<
-    ComponentFunction
-  >,
+  componentFunctions: Array<ComponentFunction>,
   children?: ReactNode
 ) {
   if (!children) {
-    return
+    return;
   }
-  const childrenArray = Array.isArray(children) ? children : [children]
+  const childrenArray = Array.isArray(children) ? children : [children];
   childrenArray.forEach((child) => {
-    const elementContructor = getReactElementType(child)
+    const elementContructor = getReactElementType(child);
     if (isNull(child) || child === false) {
-      return
+      return;
     }
     if (
       !elementContructor ||
@@ -116,9 +112,8 @@ export function checkChildrenTypes(
       !componentFunctions.includes(elementContructor)
     ) {
       throw new Error(
-        `Invalid child type ${getReactComponentDisplayName(child)}. Expected one of ${componentFunctions.map(getReactComponentDisplayName).join(', ')}`
-      )
+        `Invalid child type ${getReactComponentDisplayName(child)}. Expected one of ${componentFunctions.map(getReactComponentDisplayName).join(", ")}`
+      );
     }
-  })
+  });
 }
-

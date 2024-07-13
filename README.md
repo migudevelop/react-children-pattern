@@ -11,13 +11,13 @@ React utilities for checking allowed components and retrieving specific children
 
 ```sh
   # NPM
-  pnpm install @migudevelop/react-children-pattern
+  pnpm install react-children-pattern
 
   # NPM
-  npm install @migudevelop/react-children-pattern
+  npm install react-children-pattern
 
   # YARN
-  yarn add @migudevelop/react-children-pattern
+  yarn add react-children-pattern
 ```
 
 ## License
