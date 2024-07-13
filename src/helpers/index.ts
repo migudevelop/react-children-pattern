@@ -73,6 +73,7 @@ export function getReactElementNodeDisplayName(node: ReactNode): string {
 
 export function getReactComponentDisplayName(
   Component:
+    | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
     | FunctionComponent<Element>
@@ -82,6 +83,7 @@ export function getReactComponentDisplayName(
 
 export function findChildrenByType(
   componentFunction:
+    | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
     | FunctionComponent<Element>,

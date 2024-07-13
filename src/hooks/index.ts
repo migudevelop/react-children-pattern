@@ -1,4 +1,5 @@
 import type {
+  ReactElement,
   ReactNode,
   FunctionComponent,
   JSXElementConstructor,
@@ -10,7 +11,7 @@ import {
   getReactElementType,
 } from "../helpers";
 import { isNull, isString } from "@migudevelop/types-utils";
-import {} from "react";
+
 /**
  * Returns the childs matching the provided function component
  * @param componentFunction function component
@@ -20,6 +21,7 @@ import {} from "react";
  */
 export function useChildrenOfType(
   componentFunction:
+    | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
     | FunctionComponent<Element>,
@@ -42,6 +44,7 @@ export function useChildrenOfType(
  */
 export function useChildOfType(
   componentFunction:
+    | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
     | FunctionComponent<Element>,
@@ -61,6 +64,7 @@ export function useChildOfType(
  */
 export function useCheckChildrenTypes(
   componentFunctions: Array<
+    | ReactElement
     | JSXElementConstructor<unknown>
     | FunctionComponent<unknown>
     | FunctionComponent<Element>
